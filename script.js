@@ -1,6 +1,6 @@
 const howTOPlay=document.querySelector("#how-to-play");
 const rules=document.querySelector("#rules");
-const select=document.querySelector("#ball");
+const selects=document.querySelectorAll(".select");
 const gameHistory=document.querySelector("#game-history")
 const gameResult=document.querySelector("#result")
 const playAgain=document.querySelector("#restart")
@@ -20,10 +20,21 @@ let para1=document.createElement("p")
 let para2=document.createElement("p")
 let para3=document.createElement("p")
 let para4=document.createElement("p")
-select.addEventListener("keypress",(e)=>{
-    if (e.key === 'Enter') {
-        let val=select.value;
-        select.value=null;
+selects.forEach((select)=>{
+    let val=0;
+    document.querySelector("#one").addEventListener("click",()=>{
+        val=1;
+    })
+    document.querySelector("#two").addEventListener("click",()=>{
+        val=2;
+    })
+    document.querySelector("#three").addEventListener("click",()=>{
+        val=3;
+    })
+    document.querySelector("#four").addEventListener("click",()=>{
+        val=4;
+    })
+select.addEventListener("click",()=>{
         if(val>0 && val<=4){
             if(val>ball){
                 para4.innerHTML="balls not available";
@@ -54,8 +65,9 @@ select.addEventListener("keypress",(e)=>{
             para.innerHTML="Please choose between 1-4";
             gameHistory.appendChild(para);
         }
-    }
+    
 })
 playAgain.addEventListener("click",()=>{
     window.location.reload();
+})
 })
